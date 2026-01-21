@@ -1,0 +1,11 @@
+[
+  {
+    "task": "Write a Python function that extracts the AWS region from an S3 bucket ARN (e.g., 'arn:aws:s3:us-west-2:123456789012:bucket/my-bucket') and returns it as a string."
+  },
+  {
+    "task": "Create a JSON object that represents an AWS IAM policy allowing read-only access to all objects in an S3 bucket named 'my-data-bucket'."
+  },
+  {
+    "task": "Write a regular expression that matches valid AWS EC2 instance IDs (format: i- followed by 17 alphanumeric characters, e.g., i-0abcd1234efgh5678)."
+  }
+]
