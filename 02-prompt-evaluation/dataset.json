@@ -1,11 +1,17 @@
 [
   {
-    "task": "Write a Python function that extracts the AWS region from an S3 bucket ARN (e.g., 'arn:aws:s3:us-west-2:123456789012:bucket/my-bucket') and returns it as a string."
+    "task": "Create a JSON configuration object for an AWS Lambda function that processes S3 events, with environment variables for a DynamoDB table name and log level",
+    "format": "json",
+    "solution_criteria": "Valid JSON with Lambda configuration including Runtime, Handler, Environment variables (DynamoDB table name, log level), and S3 event trigger specification"
   },
   {
-    "task": "Create a JSON object that represents an AWS IAM policy allowing read-only access to all objects in an S3 bucket named 'my-data-bucket'."
+    "task": "Write a Python function that takes an AWS S3 bucket name and object key as parameters and returns the S3 object's metadata (size, last modified, storage class)",
+    "format": "python",
+    "solution_criteria": "Function uses boto3 S3 client, calls head_object method, and returns a dictionary containing size, last_modified, and storage_class from the response metadata"
   },
   {
-    "task": "Write a regular expression that matches valid AWS EC2 instance IDs (format: i- followed by 17 alphanumeric characters, e.g., i-0abcd1234efgh5678)."
+    "task": "Create a regular expression pattern that validates AWS IAM role ARNs in the format: arn:aws:iam::123456789012:role/RoleName",
+    "format": "regex",
+    "solution_criteria": "Regex pattern correctly matches valid IAM role ARNs, validates 12-digit account ID, alphanumeric role names, and rejects invalid formats"
   }
 ]
