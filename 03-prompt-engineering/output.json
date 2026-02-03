@@ -1,0 +1,70 @@
+[
+  {
+    "output": "```json\n[\n  \"chronic stress\",\n  \"hippocampal gray matter volume\",\n  \"memory consolidation\",\n  \"emotional regulation\",\n  \"neuroimaging\",\n  \"neural plasticity\",\n  \"trauma-informed therapeutic interventions\",\n  \"behavioral adaptation\",\n  \"neuroscience evidence\",\n  \"social welfare programs\",\n  \"early childhood adversity\",\n  \"cognitive development\",\n  \"economic productivity\",\n  \"psychological resilience\",\n  \"social support structures\",\n  \"mental health outcomes\",\n  \"cross-disciplinary collaboration\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent neuroimaging studies have demonstrated that chronic stress induces measurable changes in hippocampal gray matter volume, with implications for memory consolidation and emotional regulation. These neurobiological findings have prompted psychologists to develop trauma-informed therapeutic interventions that account for the interplay between neural plasticity and behavioral adaptation. Furthermore, policymakers have begun incorporating neuroscience evidence into social welfare programs, recognizing that early childhood adversity affects long-term cognitive development and economic productivity. The integration of these perspectives has led to cross-disciplinary collaborations examining how individual neurobiology, psychological resilience factors, and systemic social support structures collectively influence mental health outcomes across populations."
+      },
+      "solution_criteria": [
+        "Extracts all distinct disciplinary topics (neuroscience, psychology, social policy) without conflating related but separate themes",
+        "Returns topics as a valid JSON array of strings",
+        "Avoids duplicates and maintains non-overlapping topic boundaries"
+      ],
+      "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with a multidisciplinary passage containing mixed topics (e.g., neuroscience, psychology, and social policy) to verify the prompt can distinguish and extract diverse, non-overlapping themes"
+    },
+    "score": 9,
+    "reasoning": "The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the passage, with no extra commentary, and nothing else in the response. Regarding secondary criteria, the solution effectively extracts distinct disciplinary topics without significant conflation. The three disciplines (neuroscience, psychology, social policy) are well-represented with appropriate topic separation. While there is minor room for debate about whether certain topics could be more granular or consolidated differently, the current boundaries are reasonable and non-overlapping. The extraction is thorough and captures the key themes discussed in the passage."
+  },
+  {
+    "output": "```json\n[\n  \"microbial communities\",\n  \"soil ecosystems\",\n  \"anthropogenic climate change\",\n  \"bacterial composition\",\n  \"fungal diversity\",\n  \"elevated temperatures\",\n  \"metabolic rates\",\n  \"heterotrophic organisms\",\n  \"carbon mineralization\",\n  \"soil carbon sequestration\",\n  \"precipitation patterns\",\n  \"mycorrhizal networks\",\n  \"nutrient cycling\",\n  \"plant water uptake\",\n  \"microbial function\",\n  \"positive feedback loops\",\n  \"greenhouse gas emissions\",\n  \"terrestrial ecosystems\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "The study examines how microbial communities in soil ecosystems respond to anthropogenic climate change through shifts in bacterial composition and fungal diversity. We observed that elevated temperatures increased metabolic rates of heterotrophic organisms, subsequently accelerating carbon mineralization and reducing soil carbon sequestration capacity. Additionally, altered precipitation patterns disrupted mycorrhizal networks, which are critical for nutrient cycling and plant water uptake. These findings suggest that climate-driven changes in microbial function could trigger positive feedback loops, further amplifying greenhouse gas emissions from terrestrial ecosystems."
+      },
+      "solution_criteria": [
+        "Extracts both explicitly stated topics (microbial communities, soil ecosystems, climate change, bacterial composition, fungal diversity, carbon mineralization, mycorrhizal networks) and implicitly inferred themes (feedback mechanisms, ecosystem resilience, human impact on soil health)",
+        "Returns output as a valid JSON array of strings",
+        "Captures the interconnected nature of topics without unnecessary duplication"
+      ],
+      "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with a passage containing implicit and explicit topics, where some themes are directly stated while others must be inferred from context, to evaluate extraction accuracy and comprehensiveness"
+    },
+    "score": 8,
+    "reasoning": "The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It successfully extracts the explicitly stated topics and captures the interconnected nature of the content. However, it falls slightly short on the secondary criteria regarding implicitly inferred themes. While 'positive feedback loops' addresses feedback mechanisms, the solution misses 'ecosystem resilience' and 'human impact on soil health' as synthesized inferred themes. These omissions are minor since the core topics are well-represented, but they prevent a perfect score given the explicit mention of these themes in the evaluation criteria."
+  },
+  {
+    "output": "```json\n[\n  \"CRISPR-Cas9 gene editing\",\n  \"off-target mitigation\",\n  \"high-fidelity SpCas9 variants\",\n  \"sgRNA design\",\n  \"DNA-binding specificity\",\n  \"PAM-recognition domain\",\n  \"chromatin accessibility\",\n  \"HDAC inhibition\",\n  \"multiplex editing\",\n  \"orthogonal Cas9 nucleases\",\n  \"SpCas9\",\n  \"SaCas9\",\n  \"adeno-associated viral delivery\",\n  \"AAV delivery systems\",\n  \"Duchenne muscular dystrophy\",\n  \"transthyretin amyloidosis\",\n  \"murine models\",\n  \"hepatocyte transduction\",\n  \"myofiber penetration\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent advances in CRISPR-Cas9 gene editing have demonstrated significant improvements in off-target mitigation through the utilization of high-fidelity SpCas9 variants and modified sgRNA design protocols. The mechanistic basis involves enhanced DNA-binding specificity achieved via alterations to the PAM-recognition domain and optimized chromatin accessibility through transient HDAC inhibition. Additionally, multiplex editing strategies employing orthogonal Cas9 nucleases (SpCas9, SaCas9) combined with adeno-associated viral (AAV) delivery systems have shown promise in correcting pathogenic mutations associated with Duchenne muscular dystrophy and transthyretin amyloidosis in murine models, with efficacy rates exceeding 87% in hepatocyte transduction and myofiber penetration."
+      },
+      "solution_criteria": [
+        "Extracts precise technical topics including specific enzyme variants, molecular mechanisms, and delivery systems without oversimplification",
+        "Preserves domain-specific terminology and acronyms (CRISPR-Cas9, PAM, sgRNA, HDAC, AAV) as distinct topics",
+        "Captures all major technical concepts mentioned in the passage"
+      ],
+      "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with a highly technical passage featuring domain-specific jargon and acronyms (e.g., biochemistry or computer systems) to ensure the prompt extracts precise technical topics rather than oversimplifying them"
+    },
+    "score": 9,
+    "reasoning": "The solution fully satisfies all mandatory requirements: it provides a valid JSON array of strings containing topics from the passage with no extra commentary. It meets the secondary criteria by extracting precise technical topics, preserving domain-specific terminology and acronyms, and capturing all major technical concepts. The redundancy between 'adeno-associated viral delivery' and 'AAV delivery systems' is a minor issue that doesn't significantly impact the overall quality, as both terms appear in the source text and could reasonably be extracted as separate topics depending on interpretation. The extraction is comprehensive and technically accurate."
+  },
+  {
+    "output": "```json\n[\n  \"artificial intelligence\",\n  \"machine learning\",\n  \"deep learning\",\n  \"convolutional neural networks\",\n  \"recurrent neural networks\",\n  \"image recognition\",\n  \"natural language processing\",\n  \"distributed representations\",\n  \"feature hierarchies\",\n  \"representation learning\",\n  \"supervised learning\",\n  \"unsupervised learning\",\n  \"transfer learning\",\n  \"computer vision\",\n  \"sequence modeling\"\n]\n```",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent advances in artificial intelligence have been driven by breakthroughs in machine learning methodologies. Deep learning architectures, particularly convolutional neural networks and recurrent neural networks, have demonstrated superior performance in image recognition and natural language processing tasks. These neural network approaches leverage distributed representations and feature hierarchies to model complex patterns in data. The field of representation learning, which encompasses both supervised and unsupervised deep learning techniques, has become central to modern AI applications. Transfer learning, where pre-trained neural network models are fine-tuned for specific tasks, has further accelerated progress in machine learning across diverse domains including computer vision and sequence modeling."
+      },
+      "solution_criteria": [
+        "Distinguishes between broad concepts (machine learning, artificial intelligence) and specific techniques (convolutional neural networks, recurrent neural networks, transfer learning)",
+        "Groups closely related but distinct subtopics appropriately (e.g., deep learning as a distinct topic from machine learning, while recognizing neural networks as a component of deep learning)",
+        "Captures all major technical topics mentioned without excessive fragmentation or over-merging"
+      ],
+      "task_description": "\n    Extract topics out of a passage of text from a scholarly article into a JSON array of strings\n    ",
+      "scenario": "Testing with a passage containing subtly related topics that could be merged or split different ways (e.g., 'machine learning', 'neural networks', 'deep learning') to verify the prompt makes appropriate granularity decisions"
+    },
+    "score": 8,
+    "reasoning": "The solution successfully meets all mandatory requirements with a properly formatted JSON array containing only topic strings without commentary. It demonstrates strong adherence to the secondary criteria by appropriately distinguishing between broad concepts and specific techniques, and by capturing the hierarchical relationships between topics (e.g., deep learning as distinct from but related to machine learning). The main weakness is the omission of 'neural networks' as a standalone topic, which is a significant conceptual element in the passage that serves as a foundational concept for the specific architectures mentioned. However, this is a relatively minor gap given the comprehensive coverage of other topics."
+  }
+]
