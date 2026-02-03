@@ -1,0 +1,263 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">4</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">8.5 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">100.0%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a multidisciplinary passage containing mixed topics (e.g., neuroscience, psychology, and social policy) to verify the prompt can distinguish and extract diverse, non-overlapping themes</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent neuroimaging studies have demonstrated that chronic stress induces measurable changes in hippocampal gray matter volume, with implications for memory consolidation and emotional regulation. These neurobiological findings have prompted psychologists to develop trauma-informed therapeutic interventions that account for the interplay between neural plasticity and behavioral adaptation. Furthermore, policymakers have begun incorporating neuroscience evidence into social welfare programs, recognizing that early childhood adversity affects long-term cognitive development and economic productivity. The integration of these perspectives has led to cross-disciplinary collaborations examining how individual neurobiology, psychological resilience factors, and systemic social support structures collectively influence mental health outcomes across populations.</td>
+                <td class="criteria">• Extracts all distinct disciplinary topics (neuroscience, psychology, social policy) without conflating related but separate themes<br>• Returns topics as a valid JSON array of strings<br>• Avoids duplicates and maintains non-overlapping topic boundaries</td>
+                <td class="output"><pre>```json
+[
+  "chronic stress",
+  "hippocampal gray matter volume",
+  "memory consolidation",
+  "emotional regulation",
+  "neuroimaging",
+  "neural plasticity",
+  "trauma-informed therapeutic interventions",
+  "behavioral adaptation",
+  "neuroscience evidence",
+  "social welfare programs",
+  "early childhood adversity",
+  "cognitive development",
+  "economic productivity",
+  "psychological resilience",
+  "social support structures",
+  "mental health outcomes",
+  "cross-disciplinary collaboration"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the passage, with no extra commentary, and nothing else in the response. Regarding secondary criteria, the solution effectively extracts distinct disciplinary topics without significant conflation. The three disciplines (neuroscience, psychology, social policy) are well-represented with appropriate topic separation. While there is minor room for debate about whether certain topics could be more granular or consolidated differently, the current boundaries are reasonable and non-overlapping. The extraction is thorough and captures the key themes discussed in the passage.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing implicit and explicit topics, where some themes are directly stated while others must be inferred from context, to evaluate extraction accuracy and comprehensiveness</td>
+                <td class="prompt-inputs"><strong>content:</strong> The study examines how microbial communities in soil ecosystems respond to anthropogenic climate change through shifts in bacterial composition and fungal diversity. We observed that elevated temperatures increased metabolic rates of heterotrophic organisms, subsequently accelerating carbon mineralization and reducing soil carbon sequestration capacity. Additionally, altered precipitation patterns disrupted mycorrhizal networks, which are critical for nutrient cycling and plant water uptake. These findings suggest that climate-driven changes in microbial function could trigger positive feedback loops, further amplifying greenhouse gas emissions from terrestrial ecosystems.</td>
+                <td class="criteria">• Extracts both explicitly stated topics (microbial communities, soil ecosystems, climate change, bacterial composition, fungal diversity, carbon mineralization, mycorrhizal networks) and implicitly inferred themes (feedback mechanisms, ecosystem resilience, human impact on soil health)<br>• Returns output as a valid JSON array of strings<br>• Captures the interconnected nature of topics without unnecessary duplication</td>
+                <td class="output"><pre>```json
+[
+  "microbial communities",
+  "soil ecosystems",
+  "anthropogenic climate change",
+  "bacterial composition",
+  "fungal diversity",
+  "elevated temperatures",
+  "metabolic rates",
+  "heterotrophic organisms",
+  "carbon mineralization",
+  "soil carbon sequestration",
+  "precipitation patterns",
+  "mycorrhizal networks",
+  "nutrient cycling",
+  "plant water uptake",
+  "microbial function",
+  "positive feedback loops",
+  "greenhouse gas emissions",
+  "terrestrial ecosystems"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">8</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It successfully extracts the explicitly stated topics and captures the interconnected nature of the content. However, it falls slightly short on the secondary criteria regarding implicitly inferred themes. While 'positive feedback loops' addresses feedback mechanisms, the solution misses 'ecosystem resilience' and 'human impact on soil health' as synthesized inferred themes. These omissions are minor since the core topics are well-represented, but they prevent a perfect score given the explicit mention of these themes in the evaluation criteria.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a highly technical passage featuring domain-specific jargon and acronyms (e.g., biochemistry or computer systems) to ensure the prompt extracts precise technical topics rather than oversimplifying them</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in CRISPR-Cas9 gene editing have demonstrated significant improvements in off-target mitigation through the utilization of high-fidelity SpCas9 variants and modified sgRNA design protocols. The mechanistic basis involves enhanced DNA-binding specificity achieved via alterations to the PAM-recognition domain and optimized chromatin accessibility through transient HDAC inhibition. Additionally, multiplex editing strategies employing orthogonal Cas9 nucleases (SpCas9, SaCas9) combined with adeno-associated viral (AAV) delivery systems have shown promise in correcting pathogenic mutations associated with Duchenne muscular dystrophy and transthyretin amyloidosis in murine models, with efficacy rates exceeding 87% in hepatocyte transduction and myofiber penetration.</td>
+                <td class="criteria">• Extracts precise technical topics including specific enzyme variants, molecular mechanisms, and delivery systems without oversimplification<br>• Preserves domain-specific terminology and acronyms (CRISPR-Cas9, PAM, sgRNA, HDAC, AAV) as distinct topics<br>• Captures all major technical concepts mentioned in the passage</td>
+                <td class="output"><pre>```json
+[
+  "CRISPR-Cas9 gene editing",
+  "off-target mitigation",
+  "high-fidelity SpCas9 variants",
+  "sgRNA design",
+  "DNA-binding specificity",
+  "PAM-recognition domain",
+  "chromatin accessibility",
+  "HDAC inhibition",
+  "multiplex editing",
+  "orthogonal Cas9 nucleases",
+  "SpCas9",
+  "SaCas9",
+  "adeno-associated viral delivery",
+  "AAV delivery systems",
+  "Duchenne muscular dystrophy",
+  "transthyretin amyloidosis",
+  "murine models",
+  "hepatocyte transduction",
+  "myofiber penetration"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it provides a valid JSON array of strings containing topics from the passage with no extra commentary. It meets the secondary criteria by extracting precise technical topics, preserving domain-specific terminology and acronyms, and capturing all major technical concepts. The redundancy between 'adeno-associated viral delivery' and 'AAV delivery systems' is a minor issue that doesn't significantly impact the overall quality, as both terms appear in the source text and could reasonably be extracted as separate topics depending on interpretation. The extraction is comprehensive and technically accurate.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing subtly related topics that could be merged or split different ways (e.g., 'machine learning', 'neural networks', 'deep learning') to verify the prompt makes appropriate granularity decisions</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in artificial intelligence have been driven by breakthroughs in machine learning methodologies. Deep learning architectures, particularly convolutional neural networks and recurrent neural networks, have demonstrated superior performance in image recognition and natural language processing tasks. These neural network approaches leverage distributed representations and feature hierarchies to model complex patterns in data. The field of representation learning, which encompasses both supervised and unsupervised deep learning techniques, has become central to modern AI applications. Transfer learning, where pre-trained neural network models are fine-tuned for specific tasks, has further accelerated progress in machine learning across diverse domains including computer vision and sequence modeling.</td>
+                <td class="criteria">• Distinguishes between broad concepts (machine learning, artificial intelligence) and specific techniques (convolutional neural networks, recurrent neural networks, transfer learning)<br>• Groups closely related but distinct subtopics appropriately (e.g., deep learning as a distinct topic from machine learning, while recognizing neural networks as a component of deep learning)<br>• Captures all major technical topics mentioned without excessive fragmentation or over-merging</td>
+                <td class="output"><pre>```json
+[
+  "artificial intelligence",
+  "machine learning",
+  "deep learning",
+  "convolutional neural networks",
+  "recurrent neural networks",
+  "image recognition",
+  "natural language processing",
+  "distributed representations",
+  "feature hierarchies",
+  "representation learning",
+  "supervised learning",
+  "unsupervised learning",
+  "transfer learning",
+  "computer vision",
+  "sequence modeling"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">8</span></td>
+                <td class="reasoning">The solution successfully meets all mandatory requirements with a properly formatted JSON array containing only topic strings without commentary. It demonstrates strong adherence to the secondary criteria by appropriately distinguishing between broad concepts and specific techniques, and by capturing the hierarchical relationships between topics (e.g., deep learning as distinct from but related to machine learning). The main weakness is the omission of 'neural networks' as a standalone topic, which is a significant conceptual element in the passage that serves as a foundational concept for the specific architectures mentioned. However, this is a relatively minor gap given the comprehensive coverage of other topics.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    
